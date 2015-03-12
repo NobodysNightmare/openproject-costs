@@ -36,21 +36,21 @@ describe ::API::V3::CostObjects::CostObjectRepresenter do
   context 'generation' do
     subject(:generated) { representer.to_json }
 
-    it { should include_json('CostObject'.to_json).at_path('_type') }
+    it { is_expected.to include_json('CostObject'.to_json).at_path('_type') }
 
     describe 'cost_object' do
-      it { should have_json_path('id') }
+      it { is_expected.to have_json_path('id') }
 
-      it { should have_json_path('description') }
+      it { is_expected.to have_json_path('description') }
 
-      it { should have_json_path('projectId') }
-      it { should have_json_path('projectName') }
+      it { is_expected.to have_json_path('projectId') }
+      it { is_expected.to have_json_path('projectName') }
 
-      it { should have_json_path('subject') }
-      it { should have_json_path('type') }
+      it { is_expected.to have_json_path('subject') }
+      it { is_expected.to have_json_path('type') }
 
-      it { should have_json_path('createdAt') }
-      it { should have_json_path('updatedAt') }
+      it { is_expected.to have_json_path('createdAt') }
+      it { is_expected.to have_json_path('updatedAt') }
     end
   end
 end

@@ -69,16 +69,16 @@ describe ::API::V3::WorkPackages::WorkPackageRepresenter do
 
     describe 'work_package' do
       # specifiying as it used to be different
-      it { should have_json_path('spentTime') }
+      it { is_expected.to have_json_path('spentTime') }
 
-      it { should_not have_json_path('spentHours') }
+      it { is_expected.not_to have_json_path('spentHours') }
 
-      it { should have_json_path('overallCosts') }
+      it { is_expected.to have_json_path('overallCosts') }
 
       describe 'embedded' do
-        it { should have_json_path('_embedded/costObject') }
+        it { is_expected.to have_json_path('_embedded/costObject') }
 
-        it { should have_json_path('_embedded/summarizedCostEntries') }
+        it { is_expected.to have_json_path('_embedded/summarizedCostEntries') }
       end
 
       describe 'spentHours' do
@@ -113,7 +113,7 @@ describe ::API::V3::WorkPackages::WorkPackageRepresenter do
             allow(user).to receive(:allowed_to?).and_return false
           end
 
-          it { should_not have_json_path('spentTime') }
+          it { is_expected.not_to have_json_path('spentTime') }
         end
 
         context 'only view_own_time_entries permission' do
@@ -190,21 +190,21 @@ describe ::API::V3::WorkPackages::WorkPackageRepresenter do
     end
 
     describe 'work_package' do
-      it { should have_json_path('spentTime') }
+      it { is_expected.to have_json_path('spentTime') }
 
-      it { should_not have_json_path('spentHours') }
+      it { is_expected.not_to have_json_path('spentHours') }
 
-      it { should_not have_json_path('overallCosts') }
+      it { is_expected.not_to have_json_path('overallCosts') }
 
       describe 'embedded' do
-        it { should_not have_json_path('_embedded/costObject') }
+        it { is_expected.not_to have_json_path('_embedded/costObject') }
 
-        it { should_not have_json_path('_embedded/summarizedCostEntries') }
+        it { is_expected.not_to have_json_path('_embedded/summarizedCostEntries') }
       end
     end
 
     describe '_links' do
-      it { should_not have_json_path('_links/log_costs') }
+      it { is_expected.not_to have_json_path('_links/log_costs') }
     end
   end
 end
